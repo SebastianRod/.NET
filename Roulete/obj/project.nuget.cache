@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "kBOHFdsYsA+38f27g1axc9SOlQ4OC8VpQpg3lAxsuSQrK+ZFnzfzhq2eeV3a/VN5X9ZP3RsNKhDqSplzxpJrBw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\juan.b.rodriguez\\Documents\\Development\\Roulete_\\Roulete_.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\juan.b.rodriguez\\.nuget\\packages\\system.data.sqlite.core\\1.0.113.1\\system.data.sqlite.core.1.0.113.1.nupkg.sha512"
+  ],
+  "logs": []
+}

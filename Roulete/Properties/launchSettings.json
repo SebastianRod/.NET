@@ -1,0 +1,31 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:49771",
+      "sslPort": 44371
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "roulette",
+      "environmentVariables": {
+        "DB_ROUTE": "C:\\Users\\juan.b.rodriguez\\Documents\\CasinoRoulette.db",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Roulete_": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "roulette",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
+    }
+  }
+}
