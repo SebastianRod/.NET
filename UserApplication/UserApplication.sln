@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserApplication", "UserApplication.csproj", "{74506501-6F2C-4846-99BB-71AB25627071}"
+	ProjectSection(ProjectDependencies) = postProject
+		{021E3648-6E09-4492-B7B3-FE2D0E59E5CA} = {021E3648-6E09-4492-B7B3-FE2D0E59E5CA}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDOperations", "..\CRUDOperations\CRUDOperations.csproj", "{021E3648-6E09-4492-B7B3-FE2D0E59E5CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74506501-6F2C-4846-99BB-71AB25627071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74506501-6F2C-4846-99BB-71AB25627071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74506501-6F2C-4846-99BB-71AB25627071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74506501-6F2C-4846-99BB-71AB25627071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{021E3648-6E09-4492-B7B3-FE2D0E59E5CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{021E3648-6E09-4492-B7B3-FE2D0E59E5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{021E3648-6E09-4492-B7B3-FE2D0E59E5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{021E3648-6E09-4492-B7B3-FE2D0E59E5CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {446B479B-754B-47C8-B98D-4C2A7523BF59}
+	EndGlobalSection
+EndGlobal
