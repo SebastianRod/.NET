@@ -1,0 +1,13 @@
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\bin\Debug\netcoreapp3.1\PeriferiaTest.exe
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\bin\Debug\netcoreapp3.1\PeriferiaTest.deps.json
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\bin\Debug\netcoreapp3.1\PeriferiaTest.runtimeconfig.json
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\bin\Debug\netcoreapp3.1\PeriferiaTest.runtimeconfig.dev.json
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\bin\Debug\netcoreapp3.1\PeriferiaTest.dll
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\bin\Debug\netcoreapp3.1\PeriferiaTest.pdb
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\obj\Debug\netcoreapp3.1\PeriferiaTest.csprojAssemblyReference.cache
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\obj\Debug\netcoreapp3.1\PeriferiaTest.AssemblyInfoInputs.cache
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\obj\Debug\netcoreapp3.1\PeriferiaTest.AssemblyInfo.cs
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\obj\Debug\netcoreapp3.1\PeriferiaTest.csproj.CoreCompileInputs.cache
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\obj\Debug\netcoreapp3.1\PeriferiaTest.dll
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\obj\Debug\netcoreapp3.1\PeriferiaTest.pdb
+C:\Users\juan.b.rodriguez\source\repos\PeriferiaTest\obj\Debug\netcoreapp3.1\PeriferiaTest.genruntimeconfig.cache
