@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Users";
+}
+
+<h2>User</h2>
+<div id="modalCreate">
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th colspan="5" class="text-center">Users data</th>
+            </tr>
+            <tr>
+                <th>User Name</th>
+                <th>User Age</th>
+                <th>User Gender</th>
+                <th>User Nationality</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                List<Products.Models.USUARIO> users = Model;
+                foreach (var user in users)
+                {
+                    <tr>
+                        <td>@user.NOMBRE_USUARIO</td>
+                        <td>@user.EDAD_USUARIO</td>
+                        <td>@user.GENERO_USUARIO</td>
+                        <td>@user.NACIONALIDAD_USUARIO</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" onclick="ShowEditUserModal('@user.NOMBRE_USUARIO')"><span class="glyphicon glyphicon-pencil"></span>&nbsp; Edit</button>
+                            <button type="button" class="btn btn-danger" onclick="DeleteUser('@user.NOMBRE_USUARIO')"><span class="glyphicon glyphicon-trash"></span>&nbsp; Delete</button>
+                        </td>
+                    </tr>
+                }
+            }
+            <tr>
+                <td colspan="5" class="text-center">
+                    <button type="submit" class="btn btn-success" onclick="ShowCreateUserModal()"><span class="glyphicon glyphicon-plus"></span>&nbsp; Create</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="modalHijo">
+
+    </div>
+</div>
+
+

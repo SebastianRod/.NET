@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+
+<div>
+    <h3>Hi @ViewBag.User !</h3>
+    <div>
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr >
+                    <th colspan="4" class="text-center">Current user data</th>
+                </tr>
+                <tr>
+                    <th>User Role</th>
+                    <th>User Age</th>
+                    <th>User Gender</th>
+                    <th>User Nationality</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@ViewBag.Role</td>
+                    <td>@ViewBag.Age</td>
+                    <td>@ViewBag.Gender</td>
+                    <td>@ViewBag.Nationality</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="text-center">
+                        @if (ViewBag.Role.Equals("ADMIN"))
+                        {
+                            @Html.ActionLink("Manage Users", "User", "User")
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.Role.Equals("ADMIN"))
+                {
+                    <tr>
+                        <td>@Html.ActionLink("Login History", "LoginHistory", "LoginHistory")</td>
+                    </tr>
+                }
+                <tr>
+                    <td>@Html.ActionLink("Reserve products", "Product", "Product")</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

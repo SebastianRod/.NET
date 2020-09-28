@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PRODUCTS_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LOGIN_LOG">
+    <Key>
+      <PropertyRef Name="ID_LOGIN_LOG" />
+    </Key>
+    <Property Name="ID_LOGIN_LOG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FECHA_LOGIN" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="USUARIO_ID_USUARIO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.fk_LOGIN_LOG_USUARIO1" FromRole="LOGIN_LOG" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_PRODUCTO" />
+    </Key>
+    <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_PRODUCTO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANTIDAD_PRODUCTO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="RESERVA_has_PRODUCTO" Relationship="Self.fk_RESERVA_has_PRODUCTO_PRODUCTO1" FromRole="PRODUCTO" ToRole="RESERVA_has_PRODUCTO" />
+  </EntityType>
+  <EntityType Name="RESERVA">
+    <Key>
+      <PropertyRef Name="ID_RESERVA" />
+    </Key>
+    <Property Name="ID_RESERVA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USUARIO_ID_USUARIO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="RESERVA_has_PRODUCTO" Relationship="Self.fk_RESERVA_has_PRODUCTO_RESERVA1" FromRole="RESERVA" ToRole="RESERVA_has_PRODUCTO" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.fk_RESERVA_USUARIO1" FromRole="RESERVA" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="ROL">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_ROL" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="USUARIOs" Relationship="Self.fk_USUARIO_ROL1" FromRole="ROL" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_USUARIO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PWD_USUARIO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EDAD_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="GENERO_USUARIO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NACIONALIDAD_USUARIO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ROL_ID_ROL" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LOGIN_LOG" Relationship="Self.fk_LOGIN_LOG_USUARIO1" FromRole="USUARIO" ToRole="LOGIN_LOG" />
+    <NavigationProperty Name="RESERVAs" Relationship="Self.fk_RESERVA_USUARIO1" FromRole="USUARIO" ToRole="RESERVA" />
+    <NavigationProperty Name="ROL" Relationship="Self.fk_USUARIO_ROL1" FromRole="USUARIO" ToRole="ROL" />
+  </EntityType>
+  <EntityType Name="RESERVA_has_PRODUCTO">
+    <Key>
+      <PropertyRef Name="RESERVA_ID_RESERVA" />
+      <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
+      <PropertyRef Name="CANTIDAD_PRODUCTO" />
+    </Key>
+    <Property Name="RESERVA_ID_RESERVA" Type="Int32" Nullable="false" />
+    <Property Name="PRODUCTO_ID_PRODUCTO" Type="Int32" Nullable="false" />
+    <Property Name="CANTIDAD_PRODUCTO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PRODUCTO" Relationship="Self.fk_RESERVA_has_PRODUCTO_PRODUCTO1" FromRole="RESERVA_has_PRODUCTO" ToRole="PRODUCTO" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.fk_RESERVA_has_PRODUCTO_RESERVA1" FromRole="RESERVA_has_PRODUCTO" ToRole="RESERVA" />
+  </EntityType>
+  <Association Name="fk_LOGIN_LOG_USUARIO1">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="LOGIN_LOG" Type="Self.LOGIN_LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="LOGIN_LOG">
+        <PropertyRef Name="USUARIO_ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RESERVA_has_PRODUCTO_PRODUCTO1">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="RESERVA_has_PRODUCTO" Type="Self.RESERVA_has_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Principal>
+      <Dependent Role="RESERVA_has_PRODUCTO">
+        <PropertyRef Name="PRODUCTO_ID_PRODUCTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RESERVA_has_PRODUCTO_RESERVA1">
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="1" />
+    <End Role="RESERVA_has_PRODUCTO" Type="Self.RESERVA_has_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESERVA">
+        <PropertyRef Name="ID_RESERVA" />
+      </Principal>
+      <Dependent Role="RESERVA_has_PRODUCTO">
+        <PropertyRef Name="RESERVA_ID_RESERVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RESERVA_USUARIO1">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="RESERVA">
+        <PropertyRef Name="USUARIO_ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_USUARIO_ROL1">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="ID_ROL" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="ROL_ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PRODUCTS_DBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LOGIN_LOG" EntityType="Self.LOGIN_LOG" />
+    <EntitySet Name="PRODUCTOes" EntityType="Self.PRODUCTO" />
+    <EntitySet Name="RESERVAs" EntityType="Self.RESERVA" />
+    <EntitySet Name="ROLs" EntityType="Self.ROL" />
+    <EntitySet Name="USUARIOs" EntityType="Self.USUARIO" />
+    <EntitySet Name="RESERVA_has_PRODUCTO" EntityType="Self.RESERVA_has_PRODUCTO" />
+    <AssociationSet Name="fk_LOGIN_LOG_USUARIO1" Association="Self.fk_LOGIN_LOG_USUARIO1">
+      <End Role="USUARIO" EntitySet="USUARIOs" />
+      <End Role="LOGIN_LOG" EntitySet="LOGIN_LOG" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RESERVA_has_PRODUCTO_PRODUCTO1" Association="Self.fk_RESERVA_has_PRODUCTO_PRODUCTO1">
+      <End Role="PRODUCTO" EntitySet="PRODUCTOes" />
+      <End Role="RESERVA_has_PRODUCTO" EntitySet="RESERVA_has_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RESERVA_has_PRODUCTO_RESERVA1" Association="Self.fk_RESERVA_has_PRODUCTO_RESERVA1">
+      <End Role="RESERVA" EntitySet="RESERVAs" />
+      <End Role="RESERVA_has_PRODUCTO" EntitySet="RESERVA_has_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RESERVA_USUARIO1" Association="Self.fk_RESERVA_USUARIO1">
+      <End Role="USUARIO" EntitySet="USUARIOs" />
+      <End Role="RESERVA" EntitySet="RESERVAs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_USUARIO_ROL1" Association="Self.fk_USUARIO_ROL1">
+      <End Role="ROL" EntitySet="ROLs" />
+      <End Role="USUARIO" EntitySet="USUARIOs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
