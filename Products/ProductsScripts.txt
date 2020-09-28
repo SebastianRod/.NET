@@ -1,0 +1,96 @@
+-- -----------------------------------------------------
+-- Schema products
+-- -----------------------------------------------------
+USE products ;
+
+-- -----------------------------------------------------
+-- Table products.ROL
+-- -----------------------------------------------------
+CREATE TABLE products.ROL (
+  ID_ROL INT NOT NULL IDENTITY(1,1),
+  NOMBRE_ROL VARCHAR(45) NOT NULL,
+  PRIMARY KEY (ID_ROL))
+;
+
+
+-- -----------------------------------------------------
+-- Table products.USUARIO
+-- -----------------------------------------------------
+CREATE TABLE products.USUARIO (
+  ID_USUARIO INT NOT NULL IDENTITY(1,1),
+  NOMBRE_USUARIO VARCHAR(45) NOT NULL,
+  PWD_USUARIO VARCHAR(45) NOT NULL,
+  EDAD_USUARIO INT NOT NULL,
+  GENERO_USUARIO VARCHAR(1) NOT NULL,
+  NACIONALIDAD_USUARIO VARCHAR(45) NOT NULL,
+  ROL_ID_ROL INT NOT NULL,
+  PRIMARY KEY (ID_USUARIO),
+  CONSTRAINT fk_USUARIO_ROL1
+    FOREIGN KEY (ROL_ID_ROL)
+    REFERENCES products.ROL (ID_ROL)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+;
+
+
+-- -----------------------------------------------------
+-- Table products.LOGIN_LOG
+-- -----------------------------------------------------
+CREATE TABLE products.LOGIN_LOG (
+  ID_LOGIN_LOG INT NOT NULL IDENTITY(1,1),
+  FECHA_LOGIN DATETIME NOT NULL,
+  USUARIO_ID_USUARIO INT NOT NULL,
+  PRIMARY KEY (ID_LOGIN_LOG),
+  CONSTRAINT fk_LOGIN_LOG_USUARIO1
+    FOREIGN KEY (USUARIO_ID_USUARIO)
+    REFERENCES products.USUARIO (ID_USUARIO)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+;
+
+
+-- -----------------------------------------------------
+-- Table products.PRODUCTO
+-- -----------------------------------------------------
+CREATE TABLE products.PRODUCTO (
+  ID_PRODUCTO INT NOT NULL IDENTITY(1,1),
+  NOMBRE_PRODUCTO VARCHAR(45) NOT NULL,
+  CANTIDAD_PRODUCTO INT NOT NULL,
+  PRIMARY KEY (ID_PRODUCTO))
+;
+
+
+-- -----------------------------------------------------
+-- Table products.RESERVA
+-- -----------------------------------------------------
+CREATE TABLE products.RESERVA (
+  ID_RESERVA INT NOT NULL IDENTITY(1,1),
+  USUARIO_ID_USUARIO INT NOT NULL,
+  PRIMARY KEY (ID_RESERVA),
+  CONSTRAINT fk_RESERVA_USUARIO1
+    FOREIGN KEY (USUARIO_ID_USUARIO)
+    REFERENCES products.USUARIO (ID_USUARIO)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+;
+
+
+-- -----------------------------------------------------
+-- Table products.RESERVA_has_PRODUCTO
+-- -----------------------------------------------------
+CREATE TABLE products.RESERVA_has_PRODUCTO (
+  RESERVA_ID_RESERVA INT NOT NULL,
+  PRODUCTO_ID_PRODUCTO INT NOT NULL,
+  CANTIDAD_PRODUCTO INT NOT NULL,
+  CONSTRAINT fk_RESERVA_has_PRODUCTO_RESERVA1
+    FOREIGN KEY (RESERVA_ID_RESERVA)
+    REFERENCES products.RESERVA (ID_RESERVA)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT fk_RESERVA_has_PRODUCTO_PRODUCTO1
+    FOREIGN KEY (PRODUCTO_ID_PRODUCTO)
+    REFERENCES products.PRODUCTO (ID_PRODUCTO)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+;
+
